@@ -1,9 +1,10 @@
 package il.ac.technion.cs.sd.buy.lib
 
+import com.google.inject.Inject
 import il.ac.technion.cs.sd.buy.external.SuspendLineStorage
 
 // In library layer (StorageLibrary.kt)
-class StorageLibrary constructor(private val lineStorage: SuspendLineStorage) : IStorageLibrary {
+class StorageLibrary @Inject constructor(private val lineStorage: SuspendLineStorage) : IStorageLibrary {
     private var storage = lineStorage
 
     /**
