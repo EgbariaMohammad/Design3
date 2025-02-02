@@ -20,4 +20,439 @@
     <id>android</id>
     <price>500</price>
   </Product>
+
+
+  <Order>
+    <user-id>1000</user-id>
+    <order-id>non-existing-product-order</order-id>
+    <product-id>noproduct</product-id>
+    <amount>5</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-order</order-id>
+    <product-id>android</product-id>
+    <amount>5</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>cancelled-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>modified-then-cancelled-order</order-id>
+    <product-id>android</product-id>
+    <amount>5</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>modified-then-cancelled-order</order-id>
+    <new-amount>10</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>modified-then-cancelled-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>modified-then-cancelled-non-existing-order</order-id>
+    <product-id>androido</product-id>
+    <amount>5</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>modified-then-cancelled-non-existing-order</order-id>
+    <new-amount>10</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>modified-then-cancelled-non-existing-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-then-modified-non-existing-order</order-id>
+    <product-id>androido</product-id>
+    <amount>5</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>cancelled-then-modified-non-existing-order</order-id>
+    <new-amount>10</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-then-modified-non-existing-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>valid-override-invalid-order</order-id>
+    <product-id>androido</product-id>
+    <amount>5</amount>
+  </Order>
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>valid-override-invalid-order</order-id>
+    <product-id>android</product-id>
+    <amount>5</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>invalid-override-valid-order</order-id>
+    <product-id>android</product-id>
+    <amount>5</amount>
+  </Order>
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>invalid-override-valid-order</order-id>
+    <product-id>androido</product-id>
+    <amount>5</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>normal-number-of-products</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>modified-number-of-products</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+
+  <ModifyOrder>
+    <order-id>modified-number-of-products</order-id>
+    <new-amount>10</new-amount>
+  </ModifyOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-number-of-products</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>cancelled-number-of-products</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>cancelled-number-of-products</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>cancelled-number-of-products</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>cancelled-number-of-products</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>modified-then-cancelled-number-of-products</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>modified-then-cancelled-number-of-products</order-id>
+    <new-amount>10</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>modified-then-cancelled-number-of-products</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>override-should-null-number-of-products</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>override-should-null-number-of-products</order-id>
+    <product-id>androido</product-id>
+    <amount>5000</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>normal-history-order</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>normal-history-order</order-id>
+    <new-amount>5001</new-amount>
+  </ModifyOrder>
+  <ModifyOrder>
+    <order-id>normal-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <ModifyOrder>
+    <order-id>normal-history-order</order-id>
+    <new-amount>5003</new-amount>
+  </ModifyOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-history-order</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>cancelled-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-history-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+  </CancelOrder>
+  <ModifyOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+  </CancelOrder>
+  <ModifyOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-modify-alternate-history-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>cancelled-cancelled-history-order</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>cancelled-cancelled-history-order</order-id>
+    <new-amount>5002</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>cancelled-cancelled-history-order</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>cancelled-cancelled-history-order</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>cancelled-cancelled-history-order</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>1001</user-id>
+    <order-id>invalid-history-order</order-id>
+    <product-id>androido</product-id>
+    <amount>5000</amount>
+  </Order>
+
+
+  <!-- Test cases for getOrderIdsForUser -->
+  <Order>
+    <user-id>normal-user</user-id>
+    <order-id>order1</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <Order>
+    <user-id>normal-user</user-id>
+    <order-id>order3</order-id>
+    <product-id>android</product-id>
+    <amount>5002</amount>
+  </Order>
+  <Order>
+    <user-id>normal-user</user-id>
+    <order-id>order2</order-id>
+    <product-id>android</product-id>
+    <amount>5001</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>cancelled-orders-user</user-id>
+    <order-id>order4</order-id>
+    <product-id>android</product-id>
+    <amount>5000</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>order4</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>cancelled-orders-user</user-id>
+    <order-id>order5</order-id>
+    <product-id>android</product-id>
+    <amount>5001</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>order5</order-id>
+  </CancelOrder>
+
+
+  <Order>
+    <user-id>invalid-products-user</user-id>
+    <order-id>order6</order-id>
+    <product-id>invalid-product</product-id>
+    <amount>5000</amount>
+  </Order>
+  <Order>
+    <user-id>invalid-products-user</user-id>
+    <order-id>order7</order-id>
+    <product-id>android</product-id>
+    <amount>5001</amount>
+  </Order>
+
+
+  <Order>
+    <user-id>non-existent-user</user-id>
+    <order-id>order8</order-id>
+    <product-id>non-existent-product</product-id>
+    <amount>5000</amount>
+  </Order>
+
+
+  <!-- Test cases for getTotalAmountSpentByUser -->
+  <Product>
+    <id>expensive-product</id>
+    <price>1</price>
+  </Product>
+  <Product>
+    <id>expensive-product</id>
+    <price>1000</price>
+  </Product>
+  <Product>
+    <id>cheap-product</id>
+    <price>10</price>
+  </Product>
+
+  <!-- Normal user with multiple purchases -->
+  <Order>
+    <user-id>getTotalAmountSpentByUser-spending-user</user-id>
+    <order-id>spending1</order-id>
+    <product-id>expensive-product</product-id>
+    <amount>2</amount>
+  </Order>
+  <Order>
+    <user-id>getTotalAmountSpentByUser-spending-user</user-id>
+    <order-id>spending2</order-id>
+    <product-id>cheap-product</product-id>
+    <amount>5</amount>
+  </Order>
+
+  <!-- User with cancelled orders -->
+  <Order>
+    <user-id>getTotalAmountSpentByUser-cancelled-spending-user</user-id>
+    <order-id>spending3</order-id>
+    <product-id>expensive-product</product-id>
+    <amount>2</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>spending3</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getTotalAmountSpentByUser-cancelled-spending-user</user-id>
+    <order-id>spending4</order-id>
+    <product-id>cheap-product</product-id>
+    <amount>5</amount>
+  </Order>
+
+  <!-- User with modified orders -->
+  <Order>
+    <user-id>getTotalAmountSpentByUser-modified-spending-user</user-id>
+    <order-id>spending5</order-id>
+    <product-id>expensive-product</product-id>
+    <amount>2</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>spending5</order-id>
+    <new-amount>3</new-amount>
+  </ModifyOrder>
+
+  <!-- User with invalid product orders -->
+  <Order>
+    <user-id>getTotalAmountSpentByUser-invalid-product-spending-user</user-id>
+    <order-id>spending6</order-id>
+    <product-id>non-existent-product</product-id>
+    <amount>100</amount>
+  </Order>
+
+
+  <!-- Test cases for getUsersThatPurchased -->
+  <Product>
+    <id>getUsersThatPurchased-normal-product</id>
+    <price>1000</price>
+  </Product>
+
+  <!-- Normal case: multiple users buying same product -->
+  <Order>
+    <user-id>getUsersThatPurchased-user1</user-id>
+    <order-id>getUsersThatPurchased-order1</order-id>
+    <product-id>getUsersThatPurchased-normal-product</product-id>
+    <amount>2</amount>
+  </Order>
+  <Order>
+    <user-id>getUsersThatPurchased-user2</user-id>
+    <order-id>getUsersThatPurchased-order2</order-id>
+    <product-id>getUsersThatPurchased-normal-product</product-id>
+    <amount>3</amount>
+  </Order>
+
+  <!-- Case: user with cancelled order -->
+  <Order>
+    <user-id>getUsersThatPurchased-cancelled-user</user-id>
+    <order-id>getUsersThatPurchased-order3</order-id>
+    <product-id>getUsersThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getUsersThatPurchased-order3</order-id>
+  </CancelOrder>
+
+  <!-- Case: user with both cancelled and valid order -->
+  <Order>
+    <user-id>getUsersThatPurchased-mixed-user</user-id>
+    <order-id>getUsersThatPurchased-order4</order-id>
+    <product-id>getUsersThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getUsersThatPurchased-order4</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getUsersThatPurchased-mixed-user</user-id>
+    <order-id>getUsersThatPurchased-order5</order-id>
+    <product-id>getUsersThatPurchased-normal-product</product-id>
+    <amount>4</amount>
+  </Order>
+
+  <!-- For non-existent product case, no need to add orders -->
 </Root>
