@@ -455,4 +455,716 @@
   </Order>
 
   <!-- For non-existent product case, no need to add orders -->
+
+  <!-- Test cases for getOrderIdsThatPurchased -->
+  <Product>
+    <id>getOrderIdsThatPurchased-normal-product</id>
+    <price>1000</price>
+  </Product>
+
+  <!-- Normal case: multiple orders -->
+  <Order>
+    <user-id>getOrderIdsThatPurchased-user1</user-id>
+    <order-id>getOrderIdsThatPurchased-order1</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>2</amount>
+  </Order>
+  <Order>
+    <user-id>getOrderIdsThatPurchased-user2</user-id>
+    <order-id>getOrderIdsThatPurchased-order2</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>3</amount>
+  </Order>
+
+  <!-- Case: cancelled order (should be included) -->
+  <Order>
+    <user-id>getOrderIdsThatPurchased-user3</user-id>
+    <order-id>getOrderIdsThatPurchased-order3</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getOrderIdsThatPurchased-order3</order-id>
+  </CancelOrder>
+
+  <!-- Case: modified then cancelled order -->
+  <Order>
+    <user-id>getOrderIdsThatPurchased-user4</user-id>
+    <order-id>getOrderIdsThatPurchased-order4</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getOrderIdsThatPurchased-order4</order-id>
+    <new-amount>5</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getOrderIdsThatPurchased-order4</order-id>
+  </CancelOrder>
+
+  <!-- Case: Order refers to product before it's defined -->
+  <Order>
+    <user-id>getOrderIdsThatPurchased-early-user</user-id>
+    <order-id>getOrderIdsThatPurchased-early-order</order-id>
+    <product-id>getOrderIdsThatPurchased-late-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <Product>
+    <id>getOrderIdsThatPurchased-late-product</id>
+    <price>1000</price>
+  </Product>
+
+  <!-- Case: Same user multiple orders -->
+  <Order>
+    <user-id>getOrderIdsThatPurchased-repeat-user</user-id>
+    <order-id>getOrderIdsThatPurchased-repeat-order1</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <Order>
+    <user-id>getOrderIdsThatPurchased-repeat-user</user-id>
+    <order-id>getOrderIdsThatPurchased-repeat-order2</order-id>
+    <product-id>getOrderIdsThatPurchased-normal-product</product-id>
+    <amount>1</amount>
+  </Order>
+
+  <Product>
+    <id>getOrderIdsThatPurchased-redef-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getOrderIdsThatPurchased-redef-user</user-id>
+    <order-id>getOrderIdsThatPurchased-redef-order</order-id>
+    <product-id>getOrderIdsThatPurchased-redef-product</product-id>
+    <amount>1</amount>
+  </Order>
+  <Product>
+    <id>getOrderIdsThatPurchased-redef-product</id>
+    <price>2000</price>
+  </Product>
+
+
+  <!-- Test cases for getAverageNumberOfItemsPurchased -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-normal-product</id>
+    <price>1000</price>
+  </Product>
+
+  <!-- Case 1: Normal case with multiple orders -->
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user1</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order1</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-normal-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user2</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order2</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-normal-product</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 2: Product with only cancelled orders -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-cancelled-only-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user3</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order3</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-cancelled-only-product</product-id>
+    <amount>30</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getAverageNumberOfItemsPurchased-order3</order-id>
+  </CancelOrder>
+
+  <!-- Case 3: Mix of cancelled and valid orders -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-mixed-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user4</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order4</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-mixed-product</product-id>
+    <amount>40</amount>
+  </Order>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user5</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order5</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-mixed-product</product-id>
+    <amount>20</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getAverageNumberOfItemsPurchased-order5</order-id>
+  </CancelOrder>
+
+  <!-- Case 4: Modified orders -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-modified-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user6</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order6</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-modified-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAverageNumberOfItemsPurchased-order6</order-id>
+    <new-amount>20</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 5: Modified then cancelled -->
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user7</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order7</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-modified-product</product-id>
+    <amount>30</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAverageNumberOfItemsPurchased-order7</order-id>
+    <new-amount>40</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getAverageNumberOfItemsPurchased-order7</order-id>
+  </CancelOrder>
+
+  <!-- Case 6: Single order -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-single-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-user8</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-order8</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-single-product</product-id>
+    <amount>50</amount>
+  </Order>
+
+  <!-- Test cases for modified orders in getAverageNumberOfItemsPurchased -->
+  <Product>
+    <id>getAverageNumberOfItemsPurchased-multi-modified-product</id>
+    <price>1000</price>
+  </Product>
+
+  <!-- Order with multiple modifications -->
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-multi-mod-user1</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-multi-mod-order1</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-multi-modified-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAverageNumberOfItemsPurchased-multi-mod-order1</order-id>
+    <new-amount>20</new-amount>
+  </ModifyOrder>
+  <ModifyOrder>
+    <order-id>getAverageNumberOfItemsPurchased-multi-mod-order1</order-id>
+    <new-amount>30</new-amount>
+  </ModifyOrder>
+
+  <!-- Another order with different modification pattern -->
+  <Order>
+    <user-id>getAverageNumberOfItemsPurchased-multi-mod-user2</user-id>
+    <order-id>getAverageNumberOfItemsPurchased-multi-mod-order2</order-id>
+    <product-id>getAverageNumberOfItemsPurchased-multi-modified-product</product-id>
+    <amount>100</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAverageNumberOfItemsPurchased-multi-mod-order2</order-id>
+    <new-amount>50</new-amount>
+  </ModifyOrder>
+
+  <!-- Test cases for getCancelRatioForUser -->
+
+  <!-- Case 1: User with mix of normal and cancelled orders -->
+  <Order>
+    <user-id>getCancelRatioForUser-normal-user</user-id>
+    <order-id>getCancelRatioForUser-order1</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getCancelRatioForUser-normal-user</user-id>
+    <order-id>getCancelRatioForUser-order2</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order2</order-id>
+  </CancelOrder>
+
+  <!-- Case 2: User with all orders cancelled -->
+  <Order>
+    <user-id>getCancelRatioForUser-all-cancelled-user</user-id>
+    <order-id>getCancelRatioForUser-order3</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order3</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getCancelRatioForUser-all-cancelled-user</user-id>
+    <order-id>getCancelRatioForUser-order4</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order4</order-id>
+  </CancelOrder>
+
+  <!-- Case 3: User with modifications then cancellations -->
+  <Order>
+    <user-id>getCancelRatioForUser-modify-cancel-user</user-id>
+    <order-id>getCancelRatioForUser-order5</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getCancelRatioForUser-order5</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order5</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getCancelRatioForUser-modify-cancel-user</user-id>
+    <order-id>getCancelRatioForUser-order6</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 4: Multiple cancel attempts on same order -->
+  <Order>
+    <user-id>getCancelRatioForUser-multiple-cancels-user</user-id>
+    <order-id>getCancelRatioForUser-order7</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order7</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order7</order-id>
+  </CancelOrder>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order7</order-id>
+  </CancelOrder>
+
+  <!-- Case 5: Cancel, then modify (modification after cancel should be ignored) -->
+  <Order>
+    <user-id>getCancelRatioForUser-cancel-modify-user</user-id>
+    <order-id>getCancelRatioForUser-order8</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order8</order-id>
+  </CancelOrder>
+  <ModifyOrder>
+    <order-id>getCancelRatioForUser-order8</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 6: User with order for non-existent product (should not count towards ratio) -->
+  <Order>
+    <user-id>getCancelRatioForUser-invalid-product-user</user-id>
+    <order-id>getCancelRatioForUser-order9</order-id>
+    <product-id>non-existent-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getCancelRatioForUser-invalid-product-user</user-id>
+    <order-id>getCancelRatioForUser-order10</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getCancelRatioForUser-order10</order-id>
+  </CancelOrder>
+
+  <!-- Case 7: User with single order -->
+  <Order>
+    <user-id>getCancelRatioForUser-single-order-user</user-id>
+    <order-id>getCancelRatioForUser-order11</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+
+  <!-- Test cases for getModifyRatioForUser -->
+
+  <!-- Case 1: Normal mix of modified and unmodified orders -->
+  <Order>
+    <user-id>getModifyRatioForUser-normal-user</user-id>
+    <order-id>getModifyRatioForUser-order1</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order1</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <Order>
+    <user-id>getModifyRatioForUser-normal-user</user-id>
+    <order-id>getModifyRatioForUser-order2</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 2: All orders modified -->
+  <Order>
+    <user-id>getModifyRatioForUser-all-modified-user</user-id>
+    <order-id>getModifyRatioForUser-order3</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order3</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <Order>
+    <user-id>getModifyRatioForUser-all-modified-user</user-id>
+    <order-id>getModifyRatioForUser-order4</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order4</order-id>
+    <new-amount>25</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 3: Modified then cancelled orders (should count as modified) -->
+  <Order>
+    <user-id>getModifyRatioForUser-modify-cancel-user</user-id>
+    <order-id>getModifyRatioForUser-order5</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order5</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getModifyRatioForUser-order5</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getModifyRatioForUser-modify-cancel-user</user-id>
+    <order-id>getModifyRatioForUser-order6</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 4: Multiple modifications on same order -->
+  <Order>
+    <user-id>getModifyRatioForUser-multiple-mods-user</user-id>
+    <order-id>getModifyRatioForUser-order7</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order7</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order7</order-id>
+    <new-amount>20</new-amount>
+  </ModifyOrder>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order7</order-id>
+    <new-amount>25</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 5: Cancelled then modified (should count as cancelled, not modified) -->
+  <Order>
+    <user-id>getModifyRatioForUser-cancel-modify-user</user-id>
+    <order-id>getModifyRatioForUser-order8</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getModifyRatioForUser-order8</order-id>
+  </CancelOrder>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order8</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 6: Invalid product orders -->
+  <Order>
+    <user-id>getModifyRatioForUser-invalid-product-user</user-id>
+    <order-id>getModifyRatioForUser-order9</order-id>
+    <product-id>non-existent-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order9</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <Order>
+    <user-id>getModifyRatioForUser-invalid-product-user</user-id>
+    <order-id>getModifyRatioForUser-order10</order-id>
+    <product-id>android</product-id>
+    <amount>20</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getModifyRatioForUser-order10</order-id>
+    <new-amount>25</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 7: Single order -->
+  <Order>
+    <user-id>getModifyRatioForUser-single-order-user</user-id>
+    <order-id>getModifyRatioForUser-order11</order-id>
+    <product-id>android</product-id>
+    <amount>10</amount>
+  </Order>
+
+  <!-- Test cases for getAllItemsPurchased -->
+  <Product>
+    <id>getAllItemsPurchased-productA</id>
+    <price>1000</price>
+  </Product>
+  <Product>
+    <id>getAllItemsPurchased-productB</id>
+    <price>2000</price>
+  </Product>
+
+  <!-- Case 1: Normal user with multiple products -->
+  <Order>
+    <user-id>getAllItemsPurchased-normal-user</user-id>
+    <order-id>getAllItemsPurchased-order1</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getAllItemsPurchased-normal-user</user-id>
+    <order-id>getAllItemsPurchased-order2</order-id>
+    <product-id>getAllItemsPurchased-productB</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 2: Multiple orders of same product -->
+  <Order>
+    <user-id>getAllItemsPurchased-repeat-product-user</user-id>
+    <order-id>getAllItemsPurchased-order3</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getAllItemsPurchased-repeat-product-user</user-id>
+    <order-id>getAllItemsPurchased-order4</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 3: Modified orders (should use final amount) -->
+  <Order>
+    <user-id>getAllItemsPurchased-modified-user</user-id>
+    <order-id>getAllItemsPurchased-order5</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAllItemsPurchased-order5</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <Order>
+    <user-id>getAllItemsPurchased-modified-user</user-id>
+    <order-id>getAllItemsPurchased-order6</order-id>
+    <product-id>getAllItemsPurchased-productB</product-id>
+    <amount>20</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAllItemsPurchased-order6</order-id>
+    <new-amount>25</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 4: Cancelled orders (should not count) -->
+  <Order>
+    <user-id>getAllItemsPurchased-cancelled-user</user-id>
+    <order-id>getAllItemsPurchased-order7</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getAllItemsPurchased-order7</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getAllItemsPurchased-cancelled-user</user-id>
+    <order-id>getAllItemsPurchased-order8</order-id>
+    <product-id>getAllItemsPurchased-productB</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 5: Modified then cancelled (should not count) -->
+  <Order>
+    <user-id>getAllItemsPurchased-mod-cancel-user</user-id>
+    <order-id>getAllItemsPurchased-order9</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getAllItemsPurchased-order9</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getAllItemsPurchased-order9</order-id>
+  </CancelOrder>
+
+  <!-- Case 6: User with invalid product order -->
+  <Order>
+    <user-id>getAllItemsPurchased-invalid-product-user</user-id>
+    <order-id>getAllItemsPurchased-order10</order-id>
+    <product-id>non-existent-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getAllItemsPurchased-invalid-product-user</user-id>
+    <order-id>getAllItemsPurchased-order11</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 7: Same product, mix of cancelled and valid -->
+  <Order>
+    <user-id>getAllItemsPurchased-mixed-user</user-id>
+    <order-id>getAllItemsPurchased-order12</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getAllItemsPurchased-order12</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getAllItemsPurchased-mixed-user</user-id>
+    <order-id>getAllItemsPurchased-order13</order-id>
+    <product-id>getAllItemsPurchased-productA</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 1: Multiple users normal orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-multiple-users-normal-orders-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-user1</user-id>
+    <order-id>getItemsPurchasedByUsers-order1</order-id>
+    <product-id>getItemsPurchasedByUsers-multiple-users-normal-orders-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-user2</user-id>
+    <order-id>getItemsPurchasedByUsers-order2</order-id>
+    <product-id>getItemsPurchasedByUsers-multiple-users-normal-orders-test-product</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 2: Same user multiple orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-same-user-multiple-orders-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-repeat-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order3</order-id>
+    <product-id>getItemsPurchasedByUsers-same-user-multiple-orders-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-repeat-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order4</order-id>
+    <product-id>getItemsPurchasedByUsers-same-user-multiple-orders-test-product</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 3: Modified orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-modified-orders-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-modified-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order5</order-id>
+    <product-id>getItemsPurchasedByUsers-modified-orders-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getItemsPurchasedByUsers-order5</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+
+  <!-- Case 4: Cancelled orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-cancelled-orders-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-cancelled-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order6</order-id>
+    <product-id>getItemsPurchasedByUsers-cancelled-orders-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getItemsPurchasedByUsers-order6</order-id>
+  </CancelOrder>
+
+  <!-- Case 5: Mixed cancelled and valid orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-mixed-orders-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-mixed-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order7</order-id>
+    <product-id>getItemsPurchasedByUsers-mixed-orders-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <CancelOrder>
+    <order-id>getItemsPurchasedByUsers-order7</order-id>
+  </CancelOrder>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-mixed-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order8</order-id>
+    <product-id>getItemsPurchasedByUsers-mixed-orders-test-product</product-id>
+    <amount>20</amount>
+  </Order>
+
+  <!-- Case 6: Modified then cancelled -->
+  <Product>
+    <id>getItemsPurchasedByUsers-modified-then-cancelled-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-mod-cancel-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order9</order-id>
+    <product-id>getItemsPurchasedByUsers-modified-then-cancelled-test-product</product-id>
+    <amount>10</amount>
+  </Order>
+  <ModifyOrder>
+    <order-id>getItemsPurchasedByUsers-order9</order-id>
+    <new-amount>15</new-amount>
+  </ModifyOrder>
+  <CancelOrder>
+    <order-id>getItemsPurchasedByUsers-order9</order-id>
+  </CancelOrder>
+
+  <!-- Case 7: Different product orders -->
+  <Product>
+    <id>getItemsPurchasedByUsers-different-product-test-product</id>
+    <price>1000</price>
+  </Product>
+  <Product>
+    <id>getItemsPurchasedByUsers-different-product-other</id>
+    <price>1000</price>
+  </Product>
+  <Order>
+    <user-id>getItemsPurchasedByUsers-other-product-user</user-id>
+    <order-id>getItemsPurchasedByUsers-order10</order-id>
+    <product-id>getItemsPurchasedByUsers-different-product-other</product-id>
+    <amount>50</amount>
+  </Order>
 </Root>

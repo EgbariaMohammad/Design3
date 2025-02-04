@@ -111,7 +111,7 @@ class BuyProductImpl @Inject constructor(
 
     override suspend fun getOrderIdsThatPurchased(productId: String): List<String> {
         val values = productStorage.getValues(productId) ?: return emptyList()
-        return values.drop(2).chunked(2) { it[0] }.sorted()
+        return values.drop(1).chunked(2) { it[0] }.sorted()
     }
 
     override suspend fun getTotalNumberOfItemsPurchased(productId: String): Long? {
@@ -126,7 +126,7 @@ class BuyProductImpl @Inject constructor(
 
     override suspend fun getAverageNumberOfItemsPurchased(productId: String): Double? {
         val values = productStorage.getValues(productId) ?: return null
-        val amounts = values.drop(2)
+        val amounts = values.drop(1)
             .chunked(2)
             .map { it[1].toInt() }
             .filter { it > 0 }
@@ -156,7 +156,9 @@ class BuyProductImpl @Inject constructor(
 
         orders.forEach { orderId ->
             orderStorage.getValues(orderId)?.let { orderValues ->
-                if (orderValues.drop(3).size > 1) {  // Has more than one amount -> modified
+                // Filter out -1s and then check if there's more than one amount
+                val nonCancelAmounts = orderValues.drop(2).map { it.toInt() }.filter { it != -1 }
+                if (nonCancelAmounts.size > 1) {  // Has more than one non-cancel amount -> modified
                     modifiedOrders++
                 }
             }
@@ -172,7 +174,7 @@ class BuyProductImpl @Inject constructor(
         values.chunked(2).forEach { (orderId, amount) ->
             if (amount.toInt() > 0) {  // Don't count canceled orders
                 orderStorage.getValues(orderId)?.let { orderValues ->
-                    val productId = orderValues[2]
+                    val productId = orderValues[1]
                     val currentAmount = result.getOrDefault(productId, 0L)
                     result[productId] = currentAmount + amount.toLong()
                 }
@@ -186,11 +188,11 @@ class BuyProductImpl @Inject constructor(
         val values = productStorage.getValues(productId) ?: return emptyMap()
         val result = mutableMapOf<String, Long>()
 
-        values.drop(2).chunked(2).forEach { (orderId, amount) ->
+        values.drop(1).chunked(2).forEach { (orderId, amount) ->
             val amountNum = amount.toInt()
             if (amountNum > 0) {  // Don't count canceled orders
                 orderStorage.getValues(orderId)?.let { orderValues ->
-                    val userId = orderValues[1]
+                    val userId = orderValues[0]
                     val currentAmount = result.getOrDefault(userId, 0L)
                     result[userId] = currentAmount + amountNum
                 }
